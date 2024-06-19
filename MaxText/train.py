@@ -144,7 +144,9 @@ def write_metrics_to_tensorboard(writer, metrics, step, config):
     max_logging.log(
         f"completed step: {step}, seconds: {metrics['scalar']['perf/step_time_seconds']:.3f}, "
         f"TFLOP/s/device: {metrics['scalar']['perf/per_device_tflops_per_sec']:.3f}, "
-        f"loss: {metrics['scalar']['learning/loss']:.3f}"
+        f"loss: {metrics['scalar']['learning/loss']:.3f},"
+        f"grad_norm: {metrics['scalar']['learning/grad_norm']:.3f},"
+        f"param_norm: {metrics['scalar']['learning/param_norm']:.3f},"
     )
 
     if full_log and jax.process_index() == 0:
