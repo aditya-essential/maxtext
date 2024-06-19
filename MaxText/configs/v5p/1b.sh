@@ -43,7 +43,7 @@ export LIBTPU_INIT_ARGS="--xla_tpu_enable_async_collective_fusion_fuse_all_gathe
 python3 MaxText/$EXECUTABLE MaxText/configs/base.yml\
     steps=500 per_device_batch_size=16 enable_checkpointing=false\
     remat_policy=minimal global_parameter_scale=1\
-    ici_fsdp_parallelism=-1 ici_tensor_parallelism=1\
+    ici_fsdp_parallelism=1 ici_tensor_parallelism=1 ici_data_parallelism=-1\
     max_target_length=2048 base_output_directory=$OUTPUT_PATH\
     dataset_path=$DATASET_PATH use_iota_embed=true reuse_example_batch=0\
     dataset_type=tfds gcs_metrics=true attention='flash' quantization=""\
